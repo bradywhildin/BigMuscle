@@ -14,13 +14,12 @@ def fitnesstracker_data(request):
     return render(request, 'fitnesstracker/fitnesstracker_data.html', {'fitnesspic': fitnesspic})
 
 def pictures_detail(request, slug):
-    #return HttpResponse(slug)
     fitnesspic = FitnessPic.objects.get(slug=slug)
     return render(request, 'fitnesstracker/fitnesstracker_detail.html', {'fitnesspic': fitnesspic})
 
 @login_required(login_url='/accounts/login/')
-def picture_create(request):
-    if request.method == 'POST':
+def picture_create(request):  # authenticated login is required for this page
+    if request.method == 'POST':  # post means that data was sent
         form = forms.CreatePicture(request.POST, request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
