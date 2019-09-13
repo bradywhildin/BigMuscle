@@ -1,1 +1,1 @@
-web: gunicorn untitled3.wsgi
+web: gunicorn BigMuscle.wsgi
