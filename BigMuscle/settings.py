@@ -25,7 +25,7 @@ SECRET_KEY = 'd668vuu8=twa@jh1epp7=&_9wpj7bqdn#!jkv172w8_3#f=$^*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'http://big-muscle.herokuapp.com/']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -123,8 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT='staticfiles'
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
@@ -132,6 +130,4 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
 django_heroku.settings(locals())
-

@@ -1,1 +1,1 @@
-web: gunicorn BigMuscle.BigMuscle.wsgi --log-file -
+web: gunicorn BigMuscle.wsgi --log-file -
