@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'untitled3.urls'
+ROOT_URLCONF = 'BigMuscle.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'untitled3.wsgi.application'
+WSGI_APPLICATION = 'BigMuscle.wsgi.application'
 
 
 # Database
