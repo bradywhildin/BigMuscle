@@ -7,8 +7,8 @@ author: Brady Whildin, Jeremy Slaven -->
 
 {% block content %}
 
-<ul>
-  <li><a href="{% url 'homepage' %}" class="active">Home</a></li>
+<ul style="font-family: Ubuntu">
+  <li><a href="{% url 'homepage' %}" class="selected">Home</a></li>
   <li><a href="{% url 'articles:list' %}">Articles</a></li>
   <li><a href="{% url 'fitnesspics:data' %}">Pictures</a></li>
   <li style="float:right">
@@ -29,21 +29,6 @@ author: Brady Whildin, Jeremy Slaven -->
 
 <style>
 
-
-.about{
-    col-sm-6;
-    color: white;
-    font-size: 25px;
-}
-
-.font{
-    font-size: 30px;
-    font-family: "Verdana";
-    color: white;
-}
-
-</style>
-<style>
 body {
 		background-image: url(/static/HomeBackground.jpg);
 		background-repeat: no-repeat;
@@ -58,17 +43,12 @@ body {
 
 <h1>
 <body>
-<div class="font">
-
 
     {% if user.is_authenticated %}
         Welcome, {{ user.username }}.
     {% endif %}
 
-
-
 </h1>
-</div>
 <div class="container">
     <div class="row">
         <div class="col-lg-5">
@@ -76,6 +56,9 @@ body {
         </div>
 
         <div class="col-lg-7" style="font-size:30px; color:white">
+
+         @media (
+
         <h2 align="center">About Big Muscle</h2>
 
             <p>Big Muscle is a website that brings together fitness-oriented individuals.</p>
