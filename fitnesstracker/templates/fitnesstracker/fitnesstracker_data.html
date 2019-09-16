@@ -84,9 +84,6 @@ authors: Benjamin Woodatch, Brady Whildin -->
         <h3></h3>
     </div>
 
-
-
-
     <div class='pics'>
       {% for fitnesspic in fitnesspic %}
           {% if fitnesspic.author == request.user %}
@@ -100,14 +97,4 @@ authors: Benjamin Woodatch, Brady Whildin -->
       {% endfor %}
     </div>
   </body>
-<style>
-body {
-		background-image: url(/static/HomeBackground.jpg);
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-position: 50% 5%;
-		background-color: #e3e6ea;
-		background-size: cover;
-	}
-</style>
 {% endblock %}
