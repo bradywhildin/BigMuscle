@@ -6,7 +6,7 @@ author: Brady Whildin -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudfare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
@@ -45,21 +45,24 @@ li a:hover:not(.active) {
 
 body{
     background-color: black;
-    background-size: 85% 900px;
-    background-position: top right;
     background-repeat: no-repeat;
     color: #fff;
     font-family: Ubuntu;
 }
 
 body {
-    background-image: url(/static/HomeBackground.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: 50% 5%;
-    background-color: #e3e6ea;
+    background-color: black;
     background-size: cover;
 }
+
+@media (min-width: 900px) {
+    body {
+        background-image: url(/static/HomeBackground.jpg)
+    }
+}
+
 
 .selected {
     background-color: black;
