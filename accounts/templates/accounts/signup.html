@@ -7,6 +7,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8 name="viewport" content="width=device-width, initial-scale=1"> <!-- ensures screen width is able to be found properly -->
+        <!-- allows Bootstrap to be used -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudfare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 
         <title>Signup</title>
 
@@ -16,7 +21,6 @@
                 background-color: black;
                 background-size: cover;
                 color: white;
-                font-size: 20px
             }
 
             @media (max-width: 900px) { /* if width is less than 900px, below style applies */
@@ -25,10 +29,15 @@
                 }
             }
 
-            @media (min-width: 900px) { /* if width is less than 900px, below style applies */
+            @media (min-width: 900px) { /* if width is more than 900px, below style applies */
                 body {
                     background-image: url(/static/HomeBackground.jpg)
                 }
+            }
+
+            .cancelbtn {
+                width: auto;
+                padding: 10px 18px;
             }
         </style>
     </head>
@@ -54,5 +63,7 @@
             {% endfor %}
             <input type="submit" name="" value="Signup" style="font-size:30px">
         </form>
+
+        <a href="{% url 'homepage' %}" class="cancelbtn">Cancel</a>
     </body>
 </html>

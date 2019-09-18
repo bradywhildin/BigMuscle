@@ -39,6 +39,15 @@ li a:hover:not(.active) {
     }
 }
 
+h1 {
+    font-size: 4em;
+    margin-top: 1em;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+}
 </style>
 
 </head>
@@ -56,23 +65,27 @@ body {
 		background-position: 50% 5%;
 		background-color: #e3e6ea;
 		background-size: cover;
+        color: white
 	}
 </style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>.w3-btn {width:150px;} </style>
 <body>
 <center>
-<h1> <font color="white">
-<p></p>
+<h1>
 
 Welcome to Big Muscle!</h1>
-<h3>
+<h2>
 Please login/sign up to access this website
-<h3>
+<h2>
 <div class="w3-container">
-<p><a href="{% url 'accounts:login' %}"><button class="w3-button w3-black w3-round">Login</button></p></a>
+<p><a href="{% url 'accounts:login' %}"><button class="w3-button w3-black w3-round">Login</button></a></p>
+</div>
 <div class="w3-container">
-<p><a href="{% url 'accounts:signup' %}"><button class="w3-button w3-black w3-round">Sign Up</button></p></a>
+<p><a href="{% url 'accounts:signup' %}"><button class="w3-button w3-black w3-round">Sign Up</button></a></p>
+</div>
+<div class="w3-container">
+<p><a href="{% url 'homepage' %}"><button class="w3-button w3-black w3-round">Cancel</button></a></p>
+
 </center)</body>
 
 </html>
