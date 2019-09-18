@@ -30,26 +30,24 @@ authors: Nizom Djuraev, Brady Whildin -->
 <style>
 @media (min-width: 900px) {
     body {
-        background-image: url(/static/gymbackground.jpg)
+        background-image: url(/static/gymbackground.jpg);
+        width: 50%;
+        margin: 20px 0px 0px 600px;
     }
-}
-
-.body{
-    width: 50%;
-    margin: 20px 0px 0px 600px;
 }
 
 </style>
     </head>
 
-<div class="body">
+<body>
+    <div>
         <h1 align="center">{{ article.title }}</h1>
         <p>Author: {{ article.author }}</p>
         <p>{{ article.date }}</p>
         <hr>
         <p>{{ article.body|linebreaks }}</p>
-        </div>
-    </body>
+    </div>
+</body>
 {% endblock content %}
 
 
