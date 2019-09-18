@@ -5,39 +5,53 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Signup</title>
-<style>
-body {
-    background-repeat: no-repeat;
-    background-color: black;
-    background-size: cover;
-}
+    <head>
+        <meta charset="UTF-8 name="viewport" content="width=device-width, initial-scale=1"> <!-- ensures screen width is able to be found properly -->
 
-@media (max-width: 900px) {
-    body {
-        font-size: 30px;
-    }
-}
+        <title>Signup</title>
 
-@media (min-width: 900px) {
-    body {
-        background-image: url(/static/HomeBackground.jpg)
-    }
-}
+        <style>
+            body {
+                background-repeat: no-repeat;
+                background-color: black;
+                background-size: cover;
+                color: white
+            }
 
-</style>
-</head>
-<body>
-<font color="white">
-<h1>Signup</h1>
-<p><img height = 350px src='https://media.giphy.com/media/icPNRvOrFFs2uUL1mV/giphy.gif'/> </p>
+            @media (max-width: 900px) { /* if width is less than 900px, below style applies */
+                body {
+                    font-size: 30px;
+                }
+            }
+
+            @media (min-width: 900px) { /* if width is less than 900px, below style applies */
+                body {
+                    background-image: url(/static/HomeBackground.jpg)
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Signup</h1>
+
+        <p><img height = 350px src='https://media.giphy.com/media/icPNRvOrFFs2uUL1mV/giphy.gif'/> </p>
+
+        <!-- built in Django signup form used-->
         <form class="site-form" action="/accounts/signup/" method="post">
             {% csrf_token %}
-            {{ form }}
+            {% for field in form %}
+                <p>
+                    {{ field.label_tag }}
+                    <br>
+                    {{ field }}
+                    {{ field.help_text }}
+                    {% for error in field.errors %}
+                        <p style="color:red">{{ error }}</p>
+                    {% endfor %}
+                </p>
+            {% endfor %}
             <input type="submit" name="" value="Signup" style="font-size:30px">
-        </form></font>
-</body>
+        </form>
+    </body>
 </html>

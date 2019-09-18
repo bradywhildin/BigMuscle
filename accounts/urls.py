@@ -9,7 +9,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 from django.conf import settings
 
-app_name = 'accounts'
+app_name = 'accounts'  # allows urls starting with accounts/ to be grouped below
 
 urlpatterns = [
     path('signup/', views.signup_view, name='signup'),

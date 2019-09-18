@@ -5,110 +5,98 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+        <style>
+            /* style for input boxes --> */
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+            /* style for login button */
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
 
-button:hover {
-  opacity: 0.8;
-}
+            /* style for when cursor is over login button */
+            button:hover {
+                opacity: 0.8;
+            }
 
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+            /* style for cancel button */
+            .cancelbtn {
+                width: auto;
+                padding: 10px 18px;
+                background-color: #f44336;
+            }
 
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
+            /* style for gif container */
+            .imgcontainer {
+                text-align: center;
+                margin: 24px 0 12px 0;
+            }
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
+            /* style for gif */
+            img.avatar {
+                width: 40%;
+                border-radius: 50%;
+            }
 
-.container {
-  padding: 16px;
-}
+            /* style for container containing username input, password input, and login button and container containing for cancel and create account links */
+            .container {
+                padding: 16px;
+            }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
+            /* style for entire body */
+            body {
+                background-image: url(/static/HomeBackground.jpg);
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 1525px 350px;
+                background-position: top center;
+                font-family: Arial, Helvetica, sans-serif; /* if first font isn't compatible with browser, second one is tried etc. */
+            }
+        </style>
+    </head>
 
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
-</head>
-<body>
-<style>
-body {
-		background-image: url(/static/HomeBackground.jpg);
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-size: 1525px 350px;
-		background-position: top center;
-	}
-</style>
-<font color="white">
-<h2>Login Form</h2></font>
+    <body>
+        <h2 style="color:white">Login Form</h2>
 
-<form class="site-form" action="/accounts/login/" method="post">
-    {% csrf_token %}
-  <div class="imgcontainer">
-    <img src='https://media.giphy.com/media/icPNRvOrFFs2uUL1mV/giphy.gif' alt="Avatar" class="avatar" style="width:150px;height:250px;">
-  </div>
+        <!-- built in Django login form used -->
+        <form class="site-form" action="/accounts/login/" method="post" style="border:3px solid #f1f1f1">
+            {% csrf_token %}
 
-  <div class="container">
+            <div class="imgcontainer">
+                <img src='https://media.giphy.com/media/icPNRvOrFFs2uUL1mV/giphy.gif' alt="Avatar" class="avatar" style="width:150px;height:250px;">
+            </div>
 
-    <label for="uname"><b>Username</b></label>
-    <p>{{ form.username }}</p>
+            <div class="container">
+                <label><b>Username</b></label>
+                <p>{{ form.username }}</p> <!-- username input -->
 
-    <label for="psw"><b>Password</b></label>
-    <p>{{ form.password }}</p>
+                <label><b>Password</b></label>
+                <p>{{ form.password }}</p> <!-- password input -->
 
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
+                <button type="submit">Login</button>
+            </div>
 
-  <div class="container" style="background-color:#f1f1f1">
+            <div class="container" style="background-color:#f1f1f1">
+                <a href="{% url 'homepage' %}" class="cancelbtn">Cancel</a>
 
-	<a href="{% url 'homepage' %}" class="cancelbtn">Cancel</a>
-    <span class="psw">Create an account <a href="{% url 'accounts:signup' %}">here!</a></span>
-  </div>
-</form>
-
-</body>
+                <span>Create an account <a href="{% url 'accounts:signup' %}">here!</a></span>
+            </div>
+        </form>
+    </body>
 </html>
