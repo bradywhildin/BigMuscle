@@ -36,9 +36,15 @@ authors: Nizom Djuraev, Brady Whildin -->
 
 .articles {
     display: grid;
-    grid-template-columns: 25%;
+    grid-template-columns: 50%;
     grid-gap: 30px;
     justify-content: center
+}
+
+@media (min-width: 900px) {
+    .articles {
+        grid-template-columns: 25%;
+    }
 }
 
 .article {
