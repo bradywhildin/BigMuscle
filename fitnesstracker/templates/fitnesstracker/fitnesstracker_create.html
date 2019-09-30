@@ -12,8 +12,8 @@ authors: Benjamin Woodatch, Brady Whildin -->
   <li><a href="{% url 'fitnesspics:data' %}" class="active">Pictures</a></li>
   <li style="float:right">
   {% if user.is_authenticated %}
-      <form class="logout-link" action="{% url 'accounts:logout' %}" method = 'post'>
-        {% csrf_token %}
+      <form action="{% url 'accounts:logout' %}" method = 'post'>
+        {% csrf_token %}  <!-- security measure to prevent outside source from sending/taking data -->
         <button class='logoutButton' type="submit">Logout</button>
       </form>
   {% else %}
@@ -32,8 +32,8 @@ authors: Benjamin Woodatch, Brady Whildin -->
 
 <h1 align="center">Create Picture</h1>
 
-        <form class = 'site-form' action = '{% url 'fitnesspics:create' %}' method = 'post' enctype="multipart/form-data">
-            {% csrf_token %}
+        <form action = '{% url 'fitnesspics:create' %}' method = 'post' enctype="multipart/form-data">
+            {% csrf_token %}  <!-- security measure to prevent outside source from sending/taking data -->
             <p>Title: {{ form.title }}</p>
             <p>Slug: {{ form.slug }}</p>
             <p>Body: {{ form.body }}</p>

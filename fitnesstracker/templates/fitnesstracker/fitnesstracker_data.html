@@ -14,8 +14,8 @@ authors: Benjamin Woodatch, Brady Whildin -->
   <li><a href="{% url 'fitnesspics:data' %}" class="selected">Pictures</a></li>
   <li style="float:right">
   {% if user.is_authenticated %}
-      <form class="logout-link" action="{% url 'accounts:logout' %}" method = 'post'>
-        {% csrf_token %}
+      <form action="{% url 'accounts:logout' %}" method = 'post'>
+        {% csrf_token %}  <!-- security measure to prevent outside source from -->
         <button class='logoutButton' type="submit">Logout</button>
       </form>
   {% else %}

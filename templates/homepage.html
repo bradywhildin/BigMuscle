@@ -13,8 +13,8 @@ author: Brady Whildin, Jeremy Slaven -->
   <li><a href="{% url 'fitnesspics:data' %}">Pictures</a></li>
   <li style="float:right">
     {% if user.is_authenticated %}
-      <form class="logout-link" action="{% url 'accounts:logout' %}" method = 'post'>
-        {% csrf_token %}
+      <form action="{% url 'accounts:logout' %}" method = 'post'>
+        {% csrf_token %}  <!-- security measure to prevent outside source from sending/taking data -->
         <button class='logoutButton' type="submit">Logout</button>
       </form>
     {% else %}

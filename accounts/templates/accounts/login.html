@@ -79,9 +79,8 @@
     <body>
         <h2 style="color:white">Login Form</h2>
 
-        <!-- built in Django login form used -->
-        <form class="site-form" action="/accounts/login/" method="post" style="border:3px solid #f1f1f1">
-            {% csrf_token %}
+        <form action="/accounts/login/" method="post" style="border:3px solid #f1f1f1">  <!-- calls login_view function -->
+            {% csrf_token %}  <!-- security measure to prevent outside source from sending/taking data -->
 
             <div class="imgcontainer">
                 <img src='https://media.giphy.com/media/icPNRvOrFFs2uUL1mV/giphy.gif' alt="Avatar" class="avatar" style="width:150px;height:250px;">

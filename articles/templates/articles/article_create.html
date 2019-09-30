@@ -6,50 +6,59 @@ authors: Nizom Djuraev, Brady Whildin, Jeremy Slaven -->
 {% extends 'base_layouts.html' %}
 {% block content %}
 
-<ul>
-  <li><a href="{% url 'homepage' %}">Home</a></li>
-  <li><a href="{% url 'articles:list' %}" class="active">Articles</a></li>
-  <li><a href="{% url 'fitnesspics:data' %}">Pictures</a></li>
-  <li style="float:right">
-  {% if user.is_authenticated %}
-      <form class="logout-link" action="{% url 'accounts:logout' %}" method = 'post'>
-        {% csrf_token %}
-        <button class='logoutButton' type="submit">Logout</button>
-      </form>
-  {% else %}
-      <a href="{% url 'logInCreateAccount' %}">Log In/Create Account</a>
-  {% endif %}
-  </li>
-</ul>
 <head>
     <meta charset="UTF-8">
+
     <title>Create Article</title>
+
+    <style>
+        body {
+            background-image: url(/static/HomeBackground.jpg);
+            background-repeat: no-repeat;
+            background-color: black;
+            background-size: cover;
+            color: white
+        }
+    </style>
 </head>
 
-<font color="white">
-<body>
-<center>
-<h1>
-    Create Article
-</h1>
-</center>
-        <form class = 'site-form' action = '{% url 'articles:create' %}' method = 'post' enctype="multipart/form-data">
-            {% csrf_token %}
-            <p>Title: {{ form.title }}</p>
-            <p>Slug: {{ form.slug }}</p>
-            <p>Body: {{ form.body }}</p>
-            <p><input type="submit" value="Create"></p>
-        </form>
-</body>
-</font>
-<style>
-body {
-		background-image: url(/static/HomeBackground.jpg);
-		background-repeat: no-repeat;
-		background-color: black;
-		background-size: cover;
-	}
-</style>
-{% endblock %}
+<!-- Nav Bar -->
+<ul>
+    <li><a href="{% url 'homepage' %}">Home</a></li>
 
-</html>
+    <li><a href="{% url 'articles:list' %}" class="active">Articles</a></li>
+
+    <li><a href="{% url 'fitnesspics:data' %}">Pictures</a></li>
+
+    <li style="float:right">
+        {% if user.is_authenticated %}  <!-- checks if a user is currently logged in -->
+            <form action="{% url 'accounts:logout' %}" method = 'post'>
+                {% csrf_token %}  <!-- security measure to prevent outside source from sending/taking data -->
+
+                <button class='logoutButton' type="submit">Logout</button>
+            </form>
+
+        {% else %}
+            <a href="{% url 'logInCreateAccount' %}">Log In/Create Account</a>
+
+        {% endif %}
+    </li>
+</ul>
+
+<body>
+    <h1 style="text-align:center">Create Article</h1>
+
+    <form class='site-form' action='{% url 'articles:create' %}' method='post' enctype="multipart/form-data">
+        {% csrf_token %}  <!-- security measure to prevent outside source from sending/taking data -->
+
+        <p>Title: {{ form.title }}</p>
+
+        <p>Slug: {{ form.slug }}</p>
+
+        <p>Body: {{ form.body }}</p>
+
+        <p><input type="submit" value="Create"></p>
+    </form>
+</body>
+
+{% endblock %}
