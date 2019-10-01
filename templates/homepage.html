@@ -7,64 +7,56 @@ author: Brady Whildin, Jeremy Slaven -->
 
 {% block content %}
 
-<ul style="font-family: Ubuntu">
-  <li><a href="{% url 'homepage' %}" class="selected">Home</a></li>
-  <li><a href="{% url 'articles:list' %}">Articles</a></li>
-  <li><a href="{% url 'fitnesspics:data' %}">Pictures</a></li>
-  <li style="float:right">
-    {% if user.is_authenticated %}
-      <form action="{% url 'accounts:logout' %}" method = 'post'>
-        {% csrf_token %}  <!-- security measure to prevent outside source from sending/taking data -->
-        <button class='logoutButton' type="submit">Logout</button>
-      </form>
-    {% else %}
-      <a href="{% url 'logInCreateAccount' %}">Log In/Create Account</a>
-    {% endif %}
-  </li>
+<ul style="font-family: Ubuntu"> <!-- nav bar -->
+    <li><a href="{% url 'homepage' %}" class="selected">Home</a></li>
+    <li><a href="{% url 'articles:list' %}">Articles</a></li>
+    <li><a href="{% url 'fitnesspics:data' %}">Pictures</a></li>
+    <li style="float:right">
+        {% if user.is_authenticated %}
+            <form action="{% url 'accounts:logout' %}" method = 'post'>
+                {% csrf_token %}  <!-- security measure to prevent outside source from sending/taking data -->
+                <button class='logoutButton' type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'logInCreateAccount' %}">Log In/Create Account</a>
+        {% endif %}
+    </li>
 </ul>
 
 <head>
     <meta charset="UTF-8">
     <title>Big Muscle</title>
-
-<style>
-
-</style>
 </head>
 
-
-<h1>
 <body>
+    <h1>
+        {% if user.is_authenticated %} <!-- checks if a user is currently logged in -->
+            Welcome, {{ user.username }}.
+        {% endif %}
+    </h1>
 
-    {% if user.is_authenticated %}
-        Welcome, {{ user.username }}.
-    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+            <!-- If screen size is at least medium (992px), the div will take up 5/12 of the screen.
+            Otherwise, the entire screen will be taken up -->
+                <p><img src="https://media.giphy.com/media/icPNRvOrFFs2uUL1mV/giphy.gif" alt="Stick figure working out photo" class="img-responsive" style="width:100%"></p>
+            </div>
 
-</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-md-5">
-            <p><img src="https://media.giphy.com/media/icPNRvOrFFs2uUL1mV/giphy.gif" alt="Stick figure working out photo" class="img-responsive" style="width:100%"></p>
+            <div class="col-md-7" style="font-size:30px; color:white">
+            <!-- If screen size is at least medium (992px), the div will take up 7/12 of the screen.
+            Otherwise, the entire screen will be taken up -->
+                <h2 align="center">About Big Muscle</h2>
+
+                <p>Big Muscle is a website that brings together fitness-oriented individuals.</p>
+
+                <p>The articles section displays fitness-related articles posted by users. The articles range from personal fitness stories to tips for a more successful fitness experience.</p>
+
+                <p>The pictures section allows users to upload pictures. The pictures can be anything related to fitness, from healthy meals they cooked up to progress pictures.</p>
+
+                <p>Use the nav bar to navigate to the various sections. To make full use of the website, create an account to allow for creating articles and adding pictures.</p>
+            </div>
         </div>
-
-        <div class="col-md-7" style="font-size:30px; color:white">
-
-        <h2 align="center">About Big Muscle</h2>
-
-            <p>Big Muscle is a website that brings together fitness-oriented individuals.</p>
-
-            <p>The articles section displays fitness-related articles posted by users. The articles range from personal fitness stories to tips for a more successful fitness experience.</p>
-
-            <p>The pictures section allows users to upload pictures. The pictures can be anything related to fitness, from healthy meals they cooked up to progress pictures.</p>
-
-            <p>Use the nav bar to navigate to the various sections. To make full use of the website, create an account to allow for creating articles and adding pictures.</p>
-
-        </div>
-
     </div>
-
-</div>
-
 </body>
-
 {% endblock content %}

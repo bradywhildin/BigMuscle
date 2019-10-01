@@ -15,11 +15,12 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='homepage'),
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),  # include() allows app's urls to be stored at appname.urls
     path('logInCreateAccount/', views.logInCreateAccount, name='logInCreateAccount'),
     path('fitnesstracker/', include('fitnesstracker.urls')),
     path('articles/', include('articles.urls')),
 ]
+
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

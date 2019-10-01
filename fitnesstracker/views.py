@@ -23,9 +23,9 @@ def picture_create(request):  # authenticated login is required for this page
         form = forms.CreatePicture(request.POST, request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.author = request.user
+            instance.author = request.user  # takes in author's username
             instance.save()
-            return redirect('fitnesspics:data')
+            return redirect('fitnesspics:data')  # redirects to page of pictures
     else:
         form = forms.CreatePicture()
     return render(request, 'fitnesstracker/fitnesstracker_create.html', {'form': form})

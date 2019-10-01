@@ -6,12 +6,12 @@ authors: Nizom Djuraev, Brady Whildin -->
 {% extends 'base_layouts.html' %}
 {% block content %}
 
-<ul>
+<ul> <!-- nav bar -->
   <li><a href="{% url 'homepage' %}">Home</a></li>
   <li><a href="{% url 'articles:list' %}" class="selected">Articles</a></li>
   <li><a href="{% url 'fitnesspics:data' %}">Pictures</a></li>
   <li style="float:right">
-  {% if user.is_authenticated %}
+  {% if user.is_authenticated %} <!-- checks if a user is currently logged in -->
       <form action="{% url 'accounts:logout' %}" method = 'post'>
         {% csrf_token %}  <!-- security measure to prevent outside source from sending/taking data -->
         <button class='logoutButton' type="submit">Logout</button>
@@ -25,19 +25,20 @@ authors: Nizom Djuraev, Brady Whildin -->
 {% load static from staticfiles %}
 
 <head>
-<meta charset="utf-8">
-<title>Articles</title>
-<style>
-@media (min-width: 900px) {
-    body {
-        background-image: url(/static/gymbackground.jpg);
-        width: 50%;
-        margin: 20px 0px 0px 600px;
-    }
-}
+    <meta charset="utf-8">
 
-</style>
-    </head>
+    <title>Articles</title>
+
+    <style>
+    @media (min-width: 900px) { /* screen must be at least 900px for below styling to apply --> */
+        body {
+            background-image: url(/static/gymbackground.jpg);
+            width: 50%;
+            margin: 20px 0px 0px 600px;
+        }
+    }
+    </style>
+</head>
 
 <body>
     <div>

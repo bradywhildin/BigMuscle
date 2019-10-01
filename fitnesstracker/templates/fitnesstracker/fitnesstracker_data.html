@@ -8,93 +8,90 @@ authors: Benjamin Woodatch, Brady Whildin -->
 {% block content %}
 
 
-<ul>
-  <li><a href="{% url 'homepage' %}">Home</a></li>
-  <li><a href="{% url 'articles:list' %}">Articles</a></li>
-  <li><a href="{% url 'fitnesspics:data' %}" class="selected">Pictures</a></li>
-  <li style="float:right">
-  {% if user.is_authenticated %}
-      <form action="{% url 'accounts:logout' %}" method = 'post'>
-        {% csrf_token %}  <!-- security measure to prevent outside source from -->
-        <button class='logoutButton' type="submit">Logout</button>
-      </form>
-  {% else %}
-      <a href="{% url 'logInCreateAccount' %}">Log In/Create Account</a>
-  {% endif %}
-  </li>
+<ul> <!-- nav bar -->
+    <li><a href="{% url 'homepage' %}">Home</a></li>
+    <li><a href="{% url 'articles:list' %}">Articles</a></li>
+    <li><a href="{% url 'fitnesspics:data' %}" class="selected">Pictures</a></li>
+    <li style="float:right">
+        {% if user.is_authenticated %}
+            <form action="{% url 'accounts:logout' %}" method = 'post'>
+                {% csrf_token %}  <!-- security measure to prevent outside source from taking/sending data-->
+                <button class='logoutButton' type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'logInCreateAccount' %}">Log In/Create Account</a>
+        {% endif %}
+    </li>
 </ul>
 
 <head>
-<meta charset="utf-8">
-<title>Fitness Tracker</title>
-<style>
+    <meta charset="utf-8">
+    <title>Fitness Tracker</title>
+    <style>
+        .pics{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 30px;
+            font-size: 20px;
+        }
 
-.pics{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 30px;
-  font-size: 20px;
-}
+        .pic{
+            padding: 10px;
+            position: relative;
+            padding-bottom: 40px;
+        }
 
-.pic{
-  padding: 10px;
-  position: relative;
-  padding-bottom: 40px;
-}
-
-.header {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
+        .header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
 
 
-.button {
-    background-color: white;
-    border: 2px solid black;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-	font-family: verdana;
-    font-size: 24px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
+        .button {
+            background-color: white;
+            border: 2px solid black;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-family: verdana;
+            font-size: 24px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
 
-.button:hover {
-    background-color: black;
-    color: white
-}
+        .button:hover {
+            background-color: black;
+            color: white
+        }
+    </style>
+</head>
 
-</style>
-  </head>
-  <body>
+<body>
     <div class="header">
-        {% if user.is_authenticated %}
-        <a href="{% url 'fitnesspics:create' %}">
+        {% if user.is_authenticated %} <!-- checks if a user is logged in -->
+            <a href="{% url 'fitnesspics:create' %}">
             <h1><button class="button">Add Picture</button></h1>
-        </a>
-
+            </a>
         {% else %}
-        <h1 class="logInCreate">Log in or create account to add pictures.</h1>
+            <h1 class="logInCreate">Log in or create account to add pictures.</h1>
         {% endif %}
-
         <h2 align="center" size="40"><font size="40">Pictures</font></h2>
         <h3></h3>
     </div>
 
     <div class='pics'>
-      {% for fitnesspic in fitnesspic %}
-          {% if fitnesspic.author == request.user %}
-            <div class='pic'>
-              <h4>{{ fitnesspic.title }}</h4>
-                  <p><img height = 100% width = 100%  src="{{ fitnesspic.thumb.url }}" /></p>
-                  <p>{{ fitnesspic.body }}</p>
-                  <p>{{ fitnesspic.date }}</p>
-            </div>
-          {% endif %}
-      {% endfor %}
+        {% for fitnesspic in fitnesspic %}  <!-- lists pictures -->
+            {% if fitnesspic.author == request.user %}  <!-- makes it so that only current logged in user's pictures will show -->
+                <div class='pic'>
+                    <h4>{{ fitnesspic.title }}</h4>
+                    <p><img height = 100% width = 100%  src="{{ fitnesspic.thumb.url }}" /></p>
+                    <p>{{ fitnesspic.body }}</p>
+                    <p>{{ fitnesspic.date }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
-  </body>
+</body>
 {% endblock %}
